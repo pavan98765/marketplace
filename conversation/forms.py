@@ -9,10 +9,10 @@ class ConversationMessageForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={
                 'class': 'w-full py-4 px-6 rounded-xl border',
-                
+                'rows': 3,  # Add this line to specify the number of rows
+                'cols': 50,  # Add this line to specify the number of columns
             })
         }
-
 
 
     

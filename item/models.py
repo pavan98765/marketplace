@@ -10,7 +10,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
     def __str__(self):
-        return self.name 
+        return self.name
 
 class Item(models.Model):
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
@@ -21,6 +21,9 @@ class Item(models.Model):
     image = models.ImageField(upload_to='item_images', blank=True, null=True)
     created_by = models.ForeignKey(User, related_name='items', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    phone_number = models.IntegerField(blank=True, null=True)
+
+
 
     class Meta:
         ordering = ('-created_at',)

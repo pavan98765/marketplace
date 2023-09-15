@@ -14,10 +14,10 @@ def new_conversation(request, item_pk):
     if item.created_by == request.user:
         return redirect('dashboard:index')
     
-    conversations = Conversation.objects.filter(item=item).filter(members__in = [request.user.id])
+    conversations = Conversation.objects.filter(item=item).filter(members__in=[request.user.id])
     
     if conversations:
-        return redirect('conversation:detail',pk=conversations.first().pk)
+        return redirect('conversation:detail', pk=conversations.first().pk)
 
     if request.method == 'POST':
         form = ConversationMessageForm(request.POST)
@@ -33,13 +33,13 @@ def new_conversation(request, item_pk):
             conversation_message.created_by = request.user
             conversation_message.save()
 
-            return redirect('item:detail',pk=item_pk)
-        
+            return redirect('conversation:detail', pk=conversation.pk)
     else:
         form = ConversationMessageForm()
 
     return render(request, 'conversation/new.html', {
-        'form': form 
+        'form': form,
+        'item': item,
     })
 
 @login_required

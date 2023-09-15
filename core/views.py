@@ -4,15 +4,26 @@ from item.models import Category, Item
 
 from .forms import SignUpForm
 # Create your views here.
+from django.db.models import Q
 
 def index(request):
-    items = Item.objects.filter(is_sold=False)[0:6]
+    query = request.GET.get('query', '')
+    item_queryset = Item.objects.filter(is_sold=False)
+
+    if query:
+        item_queryset = item_queryset.filter(
+            Q(name__icontains=query) | Q(description__icontains=query)
+        )
+
+    items = item_queryset[:8]
     categories = Category.objects.all()
 
-    return render(request, 'core/index.html' , {
+    return render(request, 'core/index.html', {
         'categories': categories,
         'items': items,
+        'query': query,
     })
+
 
 def contact(request):
     return render(request, 'core/contact.html')
@@ -26,7 +37,7 @@ def signup(request):
             form.save()
 
             return redirect('/login/')
-        
+
     else:
         form = SignUpForm()
 
