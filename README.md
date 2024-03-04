@@ -2,6 +2,8 @@
 
 This Django-based marketplace allows users to buy and sell items through a simple and intuitive interface. Explore the live version [here](https://coder1972.pythonanywhere.com/).
 
+![img](data/Screenshot%202024-03-04%20195655.png)
+
 ## Features
 
 - User authentication
@@ -12,4 +14,3 @@ This Django-based marketplace allows users to buy and sell items through a simpl
 ## Getting Started
 
 Clone the repository and follow the instructions in the [documentation](https://github.com/pavan98765/marketplace) to set up your development environment.
-
