@@ -13,4 +13,4 @@ This Django-based marketplace allows users to buy and sell items through a simpl
 
 ## Getting Started
 
-Clone the repository and Run the server: `python manage.py runserver`
+Clone the repository and run the server: `python manage.py runserver`
